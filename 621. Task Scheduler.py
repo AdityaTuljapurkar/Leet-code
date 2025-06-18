@@ -4,21 +4,32 @@ import heapq
 
 class Solution:
     def leastInterval(self, tasks: List[str], n: int) -> int:
-        count = Counter(tasks)
-        maxheap = [-cnt for cnt in count.values()]
-        heapq.heapify(maxheap)
-        
+        count = Counter(tasks) 
+        heap = []
         time = 0
-        q = deque() 
-        while maxheap or q :
-            time +=1 
-            if maxheap :
-                cnt = 1 + heapq.heappop (maxheap)
-                if cnt : 
-                    q.append([cnt,time+n])
-            if q and q[0][1] == time :
-                heapq.heappush(maxheap,q.popleft()[0])
-        return time 
+        q = deque()
+        print (count)
+        for key, value in count.items():
+            heapq.heappush(heap, (-value))
+        print ("the heap is :" ,heap)
+        
+        while heap or q:
+            time += 1
+            if heap:
+                cnt = 1 + heapq.heappop(heap)
+                if cnt:
+                    q.append([cnt, time + n])
+            if q and q[0][1] == time:
+                heapq.heappush(heap, q.popleft()[0])
+        return time
+    
+
+
+
+
+
+
+
 
 
 
