@@ -14,7 +14,7 @@ class Solution:
             return list1 
         while list1 and list2 :
             if list1.val < list2.val : 
-                currPtr.next = list2
+                currPtr.next = list1
                 list1 = list1.next
             else : 
                 currPtr.next = list2 
@@ -25,5 +25,6 @@ class Solution:
         elif list2 and not list1 :
             currPtr.next = list2 
         return dummy.next 
+        
 
 
